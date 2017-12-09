@@ -1,0 +1,20 @@
+{
+	"name": "cov.ered.us",
+	"privatEe": "true",
+	"version": "1.0.0",
+	"description": "Donation Acceptance demo app",
+	"main": "index.js",
+	"scripts": {
+		"build:cjs-to-es6": "rm -rf build/es6; mkdir -p build/es6/_braintree; cp -aur node_modules/braintree-web build/es6/braintree-web; cp -aur node_modules/@braintree/* build/es6/_braintree; cjs-to-es6 build/es6 --renameImportSource='^@(.*)/\/lib\/_$1/'",
+		"test": "echo \"Error: no test specified\" && exit 1"
+	},
+	"keywords": ["web payments", "web-payments", "webpayments", "payment request", "payment-request", "paymentrequest", "donation", "demo"],
+	"author": "rektide de la faye <rektide@voodoowarez.com>",
+	"license": "X11",
+	"dependencies": {
+		"braintree-web": "^3.26.0"
+	},
+	"devDependencies": {
+		"cjs-to-es6": "^1.0.1"
+	}
+}

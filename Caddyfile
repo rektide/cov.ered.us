@@ -1,0 +1,11 @@
+cov.ered.us
+
+gzip {
+	level 3
+	min_length 2048
+}
+
+ext .html .js
+index index.html index.js index
+root public
+tls self_signed

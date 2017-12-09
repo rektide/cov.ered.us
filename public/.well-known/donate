@@ -1,0 +1,55 @@
+<html>
+<head>
+<title>Donate to rektide</title>
+</head>
+<body>
+<script type="module">
+import Client from "/lib/braintree/client/index.js"
+import BraintreeRequest from "/lib/braintree/payment-request/index.js"
+import promisify from "/js/promisify.js"
+
+(async function(){
+	var
+	  urlParams= new URLSearchParams( window.location.search),
+	  nonce= urlParams.nonce
+	if( nonce){
+		console.log("GO")
+		debugger
+		document.getElementById("#yourock").style.display= "inline"
+		return
+	}
+	var amount= urlParams.amount|| urlParams.price
+	if( !amount){
+		throw new Error("Expected an amount in the query string")
+	}
+	var
+	  authorization= "production_v29nyrgs_y7xgy26j4vxvz2cg",
+	  client= await Client.create({ authorization}),
+	  instance= await BraintreeRequest.create({ client}),
+	  tokenize= promisify( instance.tokenize, instance),
+	  payload= await tokenize({
+		details: {
+			total: {
+				label: "Total",
+				amount: {
+					currency: "USD",
+					value: amount
+				}
+			}
+		}
+	  })
+	console.log("Thanks for the donation!", {amount})
+	window.location= `/.well-known/donate?amount=${amount}&nonce=${nonce}&you=ok`
+})()
+</script>
+
+<div id="yourock" style="display:none; width:100%; text-align:center; font-size:32px">
+<marquee direction="down" width="600" height="240" behavior="alternate">
+	<marquee behavior="alternate">
+		Thank You!
+	</marquee>
+</marquee>
+</div>
+
+</body>
+</html>
