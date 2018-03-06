@@ -5,7 +5,7 @@
 	"description": "Donation Acceptance demo app",
 	"main": "index.js",
 	"scripts": {
-		"build": "rm -rf build/browser_modules; mkdir -p build/browser_modules; for p in $(package-depends); do mkdir -p build/browser_modules/${p#*/}; cp -ar $p $(dirname build/browser_modules/${p#*/}); done; cp package.json build; cd build; esm-bare-to-browser",
+		"build": "rm -rf build/browser_modules; mkdir -p build/browser_modules; for p in $(package-depends); do mkdir -p build/browser_modules/${p#*/}; cp -ar $p $(dirname build/browser_modules/${p#*/}); done; cp package.json build; cd build; ln -s browser_modules lib; EB2B_PREFIX_REMOVE=/browser_modules esm-bare-to-browser",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
 	"keywords": [
@@ -21,10 +21,10 @@
 	"author": "rektide de la faye <rektide@voodoowarez.com>",
 	"license": "X11",
 	"dependencies": {
-		"braintree-web": "^3.31.0",
-		"package-depends": "^1.0.2"
+		"braintree-web": "^3.31.0"
 	},
 	"devDependencies": {
-		"esm-bare-to-browser": "^1.0.1"
+		"esm-bare-to-browser": "^1.0.3",
+		"package-depends": "^1.0.3"
 	}
 }
