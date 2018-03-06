@@ -1,5 +1,5 @@
-import client from "/lib/braintree/client.js"
-import paymentRequest from "/lib/braintree/payment-request.js"
+import client from "/lib/braintree-web/client/client.js"
+import paymentRequest from "/lib/braintree-web/payment-request/external/payment-request.js"
 import promisify from "/js/promisify.js"
 
 export let client= promisify( client.create, client)
