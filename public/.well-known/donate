@@ -4,8 +4,8 @@
 </head>
 <body>
 <script type="module">
-import Client from "/lib/braintree/client/index.js"
-import BraintreeRequest from "/lib/braintree/payment-request/index.js"
+import Client from "/lib/braintree-web/client/index.js"
+import BraintreeRequest from "/lib/braintree-web/payment-request/index.js"
 import promisify from "/js/promisify.js"
 
 (async function(){

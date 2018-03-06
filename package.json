@@ -5,6 +5,7 @@
 	"description": "Donation Acceptance demo app",
 	"main": "index.js",
 	"scripts": {
+		"run": "caddy",
 		"build": "rm -rf build/browser_modules; mkdir -p build/browser_modules; for p in $(package-depends); do mkdir -p build/browser_modules/${p#*/}; cp -ar $p $(dirname build/browser_modules/${p#*/}); done; cp package.json build; cd build; ln -s browser_modules lib; EB2B_PREFIX_REMOVE=/browser_modules esm-bare-to-browser",
 		"test": "echo \"Error: no test specified\" && exit 1"
 	},
